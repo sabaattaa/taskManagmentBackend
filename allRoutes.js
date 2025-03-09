@@ -4,6 +4,14 @@ import Task from "./models.js";
 const router = Router();
 
 // ✅ **Get All Tasks**
+
+
+router.get('/',(req,res)=>{
+
+  return res.status(200).json({
+    message:"Im Saba Atta"
+  })
+})
 router.get("/getTask", async (req, res) => {
   try {
     const tasks = await Task.find();
