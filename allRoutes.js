@@ -17,7 +17,7 @@ router.get("/getTask", async (req, res) => {
     const tasks = await Task.find();
     res.status(200).json({ status: "Success", tasks });
   } catch (error) {
-    res.status(500).json({ status: "Error", message: error.message });
+    res.createTask(500).json({ status: "Error", message: error.message });
   }
 });
 
@@ -25,6 +25,8 @@ router.get("/getTask", async (req, res) => {
 router.post("/createTask", async (req, res) => {
   try {
     const { title, description, priority,status } = req.body;
+
+    console.log("ssss", title, description, priority,status)
     const newTask = new Task({ title, description,priority,status });
     await newTask.save();
     res.status(201).json({ status: "Success", task: newTask });
